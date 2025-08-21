@@ -1,14 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, FlatList } from 'react-native';
+import Header from "./components/Header";
+import TaskInput from "./components/Taskinput";
+import Task from "./components/Finder";
 
 export default function App() {
+  const lista = [
+    { id: "1", text: "Hacer tarea de movil" },
+    { id: "2", text: "Estudiar para el examen" },
+    { id: "3", text: "Ir al gym" },
+  ];
+
   return (
     <View style={styles.container}>
-      <Text style={styles.tittle}>¡Mi primera app con React native!</Text>
-      <Button
-      title="Presióname"
-      onPress={()=> Alert.alert('¡Hola! Este es mi primer botón')}
-      />
+      <Header></Header>
+      <TaskInput></TaskInput>
+      <FlatList
+        data={lista}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <Task text={item.text} />}>
+      </FlatList>
     </View>
   );
 }
@@ -16,13 +26,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  tittle:{
-    fontsize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingTop: 60,
+    paddingHorizontal: 20,
   },
 });
