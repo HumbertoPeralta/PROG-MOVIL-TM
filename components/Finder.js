@@ -2,7 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, } from 'react-native';
 
 export default function Task({ text }) {
-  return <Text style={styles.item}>• {text}</Text>;
+  return (<Text style={styles.item}>• {text}</Text>
+    
+  );
 }
 
 const styles = StyleSheet.create({
